@@ -1,0 +1,8 @@
+Changes
+MANIFEST
+Makefile.PL
+Regex.pm
+t/test.t
+t/pod.t
+README
+COPYING
