@@ -15,6 +15,9 @@
 # $Id$
 #
 # $Log$
+# Revision 0.8  2002/07/28 20:31:28  dave
+# Applied "exists" hash from Steffen Müller.
+#
 # Revision 0.7  2002/07/12 18:37:09  dave
 # Corrected Attribute::Handler dependencies
 #
@@ -83,7 +86,7 @@ sub EXISTS {
 
   $key = qr/$key/ unless $is_re;
 
-  /$key/ && return 1 for keys %$key;
+  /$key/ && return 1 for keys %$self;
 
   return;
 }
