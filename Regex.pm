@@ -15,6 +15,9 @@
 # $Id$
 #
 # $Log$
+# Revision 0.4  2001/09/03 19:54:35  dave
+# Minor fixes.
+#
 # Revision 0.3  2001/09/02 18:09:09  dave
 # Added ref to Tie::RegexpHash.
 #
@@ -90,7 +93,6 @@ sub DELETE {
       delete $self->{$_};
     }
   }
-#  /$key/ and delete $self->{$_} for keys %$self;
 }
 
 1;
