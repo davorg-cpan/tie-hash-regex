@@ -1,7 +1,7 @@
 # Before `make install' is performed this script should be runnable with
 # `make test'. After `make install' it should work as `perl test.pl'
 
-use Test::Simple tests=> 13;
+use Test::Simple tests=> 14;
 
 use Tie::Hash::Regex;
 
@@ -29,6 +29,7 @@ ok(keys %hash == 2);
 ok(exists $hash{key});
 ok(exists $hash{k});
 ok(exists $hash{qr'^k'});
+ok(not exists $hash{zz});
 
 delete $hash{2};
 my @k = keys %hash;

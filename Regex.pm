@@ -1,118 +1,4 @@
-#
-# DESCRIPTION
-#  Tie::Hash::Regex is a Perl object that implements a hash which allows
-#  regex matching on key lookups.
-#
-# AUTHOR
-#   Dave Cross   <dave@mag-sol.com>
-#
-# COPYRIGHT
-#   Copyright (C) 2001, Magnum Solutions Ltd.  All Rights Reserved.
-#
-#   This script is free software; you can redistribute it and/or
-#   modify it under the same terms as Perl itself.
-#
 # $Id$
-#
-# $Log$
-# Revision 0.9  2002/09/23 19:03:49  dave
-# Fixed to work with Perl 5.8.0.
-#
-# Revision 0.8  2002/07/28 20:31:28  dave
-# Applied "exists" hash from Steffen Müller.
-#
-# Revision 0.7  2002/07/12 18:37:09  dave
-# Corrected Attribute::Handler dependencies
-#
-# Revision 0.6  2001/12/09 19:08:31  dave
-# Doc fixes.
-#
-# Revision 0.5  2001/12/09 19:06:36  dave
-# Added Attribute::Handlers interface.
-#
-# Revision 0.4  2001/09/03 19:54:35  dave
-# Minor fixes.
-#
-# Revision 0.3  2001/09/02 18:09:09  dave
-# Added ref to Tie::RegexpHash.
-#
-# Revision 0.2  2001/06/03 17:57:26  dave
-# Put into RCS.
-#
-#
-
-package Tie::Hash::Regex; 
-
-use strict;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
-
-require Exporter;
-require Tie::Hash;
-use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
-
-@ISA = qw(Exporter Tie::StdHash);
-@EXPORT = qw();
-@EXPORT_OK =();
-
-$VERSION = sprintf "%d.%02d", '$Revision$ ' =~ /(\d+)\.(\d+)/;
-
-sub FETCH {
-  my $self = shift;
-  my $key = shift;
-
-  my $is_re = (ref $key eq 'Regexp');
-
-  return $self->{$key} if !$is_re && exists $self->{$key};
-
-  $key = qr/$key/ unless $is_re;
-
-  # NOTE: wantarray will _never_ be true when FETCH is called
-  #       using the standard hash semantics. I've put that piece
-  #       of code in for people who are happy using syntax like:
-  #       tied(%h)->FETCH(qr/$pat/);
-  if (wantarray) {
-    return @{$self}{ grep /$key/, keys %$self };
-  } else {
-    /$key/ and return $self->{$_} for keys %$self;
-  }
-
-  return;
-}
-
-sub EXISTS {
-  my $self = shift;
-  my $key = shift;
-
-  my $is_re = (ref $key eq 'Regexp');
-
-  return 1 if !$is_re && exists $self->{$key};
-
-  $key = qr/$key/ unless $is_re;
-
-  /$key/ && return 1 for keys %$self;
-
-  return;
-}
-
-sub DELETE {
-  my $self = shift;
-  my $key = shift;
-
-  my $is_re = (ref $key eq 'Regexp');
-
-  return delete $self->{$key} if !$is_re && exists $self->{$key};
-
-  $key = qr/$key/ unless $is_re;
-
-  for (keys %$self) {
-    if (/$key/) {
-      delete $self->{$_};
-    }
-  }
-}
-
-1;
-__END__
 
 =head1 NAME
 
@@ -174,12 +60,118 @@ using the slightly less readable:
 From version 0.06, you can use attributes to define your hash as being tied
 to Tie::Hash::Regex. You'll need to install the module Attribute::Handlers.
 
+=cut
+
+package Tie::Hash::Regex; 
+
+use strict;
+use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
+
+require Exporter;
+require Tie::Hash;
+use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
+
+@ISA = qw(Exporter Tie::StdHash);
+@EXPORT = qw();
+@EXPORT_OK =();
+
+$VERSION = sprintf "%d.%02d", '$Revision$ ' =~ /(\d+)\.(\d+)/;
+
+=head1 METHODS
+
+=head2 FETCH
+
+Get a value from the hash. If there isn't an exact match try a regex
+match.
+
+=cut
+
+sub FETCH {
+  my $self = shift;
+  my $key = shift;
+
+  my $is_re = (ref $key eq 'Regexp');
+
+  return $self->{$key} if !$is_re && exists $self->{$key};
+
+  $key = qr/$key/ unless $is_re;
+
+  # NOTE: wantarray will _never_ be true when FETCH is called
+  #       using the standard hash semantics. I've put that piece
+  #       of code in for people who are happy using syntax like:
+  #       tied(%h)->FETCH(qr/$pat/);
+  if (wantarray) {
+    return @{$self}{ grep /$key/, keys %$self };
+  } else {
+    /$key/ and return $self->{$_} for keys %$self;
+  }
+
+  return;
+}
+
+=head2 EXISTS
+
+See if a key exists in the hash. If there isn't an exact match try a regex
+match.
+
+=cut
+
+sub EXISTS {
+  my $self = shift;
+  my $key = shift;
+
+  my $is_re = (ref $key eq 'Regexp');
+
+  return 1 if !$is_re && exists $self->{$key};
+
+  $key = qr/$key/ unless $is_re;
+
+  /$key/ && return 1 for keys %$self;
+
+  return;
+}
+
+=head2 DELETE
+
+Delete a key from the hash. If there isn't an exact match try a regex
+match.
+
+=cut
+
+sub DELETE {
+  my $self = shift;
+  my $key = shift;
+
+  my $is_re = (ref $key eq 'Regexp');
+
+  return delete $self->{$key} if !$is_re && exists $self->{$key};
+
+  $key = qr/$key/ unless $is_re;
+
+  for (keys %$self) {
+    if (/$key/) {
+      delete $self->{$_};
+    }
+  }
+}
+
+1;
+__END__
+
+
 =head1 AUTHOR
 
 Dave Cross <dave@dave.org.uk>
 
 Thanks to the Perlmonks <http://www.perlmonks.org> for the original idea
 and to Jeff "japhy" Pinyan for some useful code suggestions.
+
+=head1 COPYRIGHT
+
+Copyright (C) 2001, Magnum Solutions Ltd.  All Rights Reserved.
+
+This script is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
@@ -190,3 +182,35 @@ perltie(1).
 Tie::RegexpHash(1)
 
 =cut
+
+#
+# $Log$
+# Revision 0.10  2004/10/23 16:19:15  dave
+# Improve test coverage.
+#
+# Revision 0.9  2002/09/23 19:03:49  dave
+# Fixed to work with Perl 5.8.0.
+#
+# Revision 0.8  2002/07/28 20:31:28  dave
+# Applied "exists" hash from Steffen Müller.
+#
+# Revision 0.7  2002/07/12 18:37:09  dave
+# Corrected Attribute::Handler dependencies
+#
+# Revision 0.6  2001/12/09 19:08:31  dave
+# Doc fixes.
+#
+# Revision 0.5  2001/12/09 19:06:36  dave
+# Added Attribute::Handlers interface.
+#
+# Revision 0.4  2001/09/03 19:54:35  dave
+# Minor fixes.
+#
+# Revision 0.3  2001/09/02 18:09:09  dave
+# Added ref to Tie::RegexpHash.
+#
+# Revision 0.2  2001/06/03 17:57:26  dave
+# Put into RCS.
+#
+#
+
