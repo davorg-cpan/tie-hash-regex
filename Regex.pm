@@ -15,6 +15,9 @@
 # $Id$
 #
 # $Log$
+# Revision 0.6  2001/12/09 19:08:31  dave
+# Doc fixes.
+#
 # Revision 0.5  2001/12/09 19:06:36  dave
 # Added Attribute::Handlers interface.
 #
@@ -159,7 +162,7 @@ using the slightly less readable:
 
 =head2 ATTRIBUTE INTERFACE
 
-From version 1.06, you can use attributes to define your hash as being tied
+From version 0.06, you can use attributes to define your hash as being tied
 to Tie::Hash::Regex. You'll need to install the module Attribute::Handlers.
 
 =head1 AUTHOR
