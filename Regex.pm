@@ -15,6 +15,9 @@
 # $Id$
 #
 # $Log$
+# Revision 0.3  2001/09/02 18:09:09  dave
+# Added ref to Tie::RegexpHash.
+#
 # Revision 0.2  2001/06/03 17:57:26  dave
 # Put into RCS.
 #
@@ -157,5 +160,7 @@ and to Jeff "japhy" Pinyan for some useful code suggestions.
 perl(1).
 
 perltie(1).
+
+Tie::RegexpHash(1)
 
 =cut
