@@ -15,6 +15,9 @@
 # $Id$
 #
 # $Log$
+# Revision 0.7  2002/07/12 18:37:09  dave
+# Corrected Attribute::Handler dependencies
+#
 # Revision 0.6  2001/12/09 19:08:31  dave
 # Doc fixes.
 #
@@ -32,7 +35,7 @@
 #
 #
 
-package Tie::Hash::Regex;
+package Tie::Hash::Regex; 
 
 use strict;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
