@@ -185,6 +185,9 @@ Tie::RegexpHash(1)
 
 #
 # $Log$
+# Revision 1.0  2006/06/01 18:50:38  dave
+# Raising to version 1.0
+#
 # Revision 0.10  2004/10/23 16:19:15  dave
 # Improve test coverage.
 #
