@@ -4,5 +4,7 @@ Makefile.PL
 Regex.pm
 t/test.t
 t/pod.t
+t/pod_coverage.t
 README
 COPYING
+META.yml                                 Module meta-data (added by MakeMaker)
