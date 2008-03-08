@@ -1,11 +1,6 @@
-# Before `make install' is performed this script should be runnable with
-# `make test'. After `make install' it should work as `perl test.pl'
+use Test::More tests=> 14;
 
-use Test::Simple tests=> 14;
-
-use Tie::Hash::Regex;
-
-ok(1);
+BEGIN { use_ok 'Tie::Hash::Regex' };
 
 my %hash : Regex;
 
