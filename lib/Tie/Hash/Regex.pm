@@ -1,4 +1,4 @@
-# $Id$
+# $Id: Regex.pm 15 2006-06-01 18:50:38Z dave $
 
 =head1 NAME
 
@@ -75,7 +75,7 @@ use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
 @EXPORT = qw();
 @EXPORT_OK =();
 
-$VERSION = sprintf "%d.%02d", '$Revision$ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d.%02d", '$Revision: 15 $ ' =~ /(\d+)\.(\d+)/;
 
 =head1 METHODS
 
