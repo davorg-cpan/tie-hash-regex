@@ -1,5 +1,6 @@
 Changes
 MANIFEST
+Build.PL
 Makefile.PL
 lib/Tie/Hash/Regex.pm
 t/test.t
