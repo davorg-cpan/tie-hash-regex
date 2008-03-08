@@ -1,7 +1,7 @@
 Changes
 MANIFEST
 Makefile.PL
-Regex.pm
+lib/Tie/Hash/Regex.pm
 t/test.t
 t/pod.t
 t/pod_coverage.t
