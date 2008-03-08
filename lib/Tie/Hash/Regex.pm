@@ -64,8 +64,10 @@ to Tie::Hash::Regex. You'll need to install the module Attribute::Handlers.
 
 package Tie::Hash::Regex; 
 
+use 5.006;
 use strict;
-use vars qw($VERSION @ISA @EXPORT @EXPORT_OK);
+use warnings;
+our ($VERSION, @ISA, @EXPORT, @EXPORT_OK);
 
 require Exporter;
 require Tie::Hash;
@@ -75,7 +77,7 @@ use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
 @EXPORT = qw();
 @EXPORT_OK =();
 
-$VERSION = sprintf "%d.%02d", '$Revision: 15 $ ' =~ /(\d+)\.(\d+)/;
+$VERSION = sprintf "%d", '$Revision: 15 $ ' =~ /(\d+)/;
 
 =head1 METHODS
 
@@ -161,14 +163,16 @@ __END__
 
 =head1 AUTHOR
 
-Dave Cross <dave@dave.org.uk>
+Dave Cross <dave@mag-sol.com>
 
 Thanks to the Perlmonks <http://www.perlmonks.org> for the original idea
 and to Jeff "japhy" Pinyan for some useful code suggestions.
 
 =head1 COPYRIGHT
 
-Copyright (C) 2001, Magnum Solutions Ltd.  All Rights Reserved.
+Copyright (C) 2001-8, Magnum Solutions Ltd.  All Rights Reserved.
+
+=head1 LICENSE
 
 This script is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
@@ -182,38 +186,3 @@ perltie(1).
 Tie::RegexpHash(1)
 
 =cut
-
-#
-# $Log$
-# Revision 1.0  2006/06/01 18:50:38  dave
-# Raising to version 1.0
-#
-# Revision 0.10  2004/10/23 16:19:15  dave
-# Improve test coverage.
-#
-# Revision 0.9  2002/09/23 19:03:49  dave
-# Fixed to work with Perl 5.8.0.
-#
-# Revision 0.8  2002/07/28 20:31:28  dave
-# Applied "exists" hash from Steffen Müller.
-#
-# Revision 0.7  2002/07/12 18:37:09  dave
-# Corrected Attribute::Handler dependencies
-#
-# Revision 0.6  2001/12/09 19:08:31  dave
-# Doc fixes.
-#
-# Revision 0.5  2001/12/09 19:06:36  dave
-# Added Attribute::Handlers interface.
-#
-# Revision 0.4  2001/09/03 19:54:35  dave
-# Minor fixes.
-#
-# Revision 0.3  2001/09/02 18:09:09  dave
-# Added ref to Tie::RegexpHash.
-#
-# Revision 0.2  2001/06/03 17:57:26  dave
-# Put into RCS.
-#
-#
-
