@@ -39,8 +39,8 @@ into this directory should also do the trick.</TEXT>
 If you install the module using the standard method you should be able to 
 read it by typing</TEXT>
 
-<PRE>   perldoc Tie::Hash::Regex
-</PRE>
+<CODE>   perldoc Tie::Hash::Regex
+</CODE>
 <TEXT>at a comand prompt.</TEXT>
 </SUBSECTION>
 
