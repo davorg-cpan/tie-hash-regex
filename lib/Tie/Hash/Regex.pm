@@ -77,7 +77,7 @@ use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
 @EXPORT = qw();
 @EXPORT_OK =();
 
-$VERSION = sprintf "%d", '$Revision: 15 $ ' =~ /(\d+)/;
+$VERSION = 1.02;
 
 =head1 METHODS
 
