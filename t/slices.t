@@ -1,6 +1,8 @@
-use Test::More tests=> 12;
+use Test::More;
 
 BEGIN { use_ok 'Tie::Hash::Regex' };
+
+plan skip_all => 'Old Perl' if $] lt '5.020';
 
 my %hash : Regex;
 
@@ -28,11 +30,10 @@ undef %ones;
 
 ($one, $two) = @hash{ qr/^key\d$/ };
 
-is( $one, $hash{ key1  }, 'Slice test 1' );
-
 TODO: {
   local $TODO = q[This doesn't work];
 
+  is( $one, $hash{ key1  }, 'Slice test 1' );
   is( $two, $hash{ key2  }, 'Slice test 2' );
 
   %ones = %hash{ qr/^key1+$/ };
@@ -52,3 +53,5 @@ TODO: {
 
   ok( ! defined $oops[0], 'Deletion test 3' );
 }
+
+done_testing();
