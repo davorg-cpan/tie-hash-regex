@@ -2,7 +2,7 @@ use Test::More;
 
 BEGIN { use_ok 'Tie::Hash::Regex' };
 
-plan skip_all => 'Old Perl' if $] lt '5.020';
+#plan skip_all => 'Old Perl' if $] lt '5.020';
 
 my %hash : Regex;
 
