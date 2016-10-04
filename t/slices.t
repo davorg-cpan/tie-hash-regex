@@ -17,10 +17,10 @@ $hash{ key11 } = "eleven";
 is( $one, $hash{ key1  }, 'Simple key check 1' );
 is( $two, $hash{ key2  }, 'Simple key check 2' );
 
-%ones = %hash{ 'key1', 'key11' };
-
-is( $ones{ key1  }, $hash { key1  }, 'Simple key check 3' );
-is( $ones{ key11 }, $hash { key11 }, 'Simple key check 4' );
+#%ones = %hash{ 'key1', 'key11' };
+#
+#is( $ones{ key1  }, $hash { key1  }, 'Simple key check 3' );
+#is( $ones{ key11 }, $hash { key11 }, 'Simple key check 4' );
 
 undef $one;
 undef $two;
