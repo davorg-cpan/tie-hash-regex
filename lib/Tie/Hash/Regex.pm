@@ -77,7 +77,7 @@ use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
 @EXPORT = qw();
 @EXPORT_OK =();
 
-$VERSION = 1.02;
+$VERSION = 1.10;
 
 =head1 METHODS
 
