@@ -1,4 +1,3 @@
-# $Id: Regex.pm 15 2006-06-01 18:50:38Z dave $
 
 =head1 NAME
 
@@ -77,7 +76,7 @@ use Attribute::Handlers autotie => { "__CALLER__::Regex" => __PACKAGE__ };
 @EXPORT = qw();
 @EXPORT_OK =();
 
-$VERSION = 1.10;
+$VERSION = 1.11;
 
 =head1 METHODS
 
