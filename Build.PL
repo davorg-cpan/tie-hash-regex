@@ -14,7 +14,12 @@ my $build = Module::Build->new(
 		'Test::Pod'           => 0,
 		'Test::Pod::Coverage' => 0,
 	},
-        create_makefile_pl => 'traditional'
+        create_makefile_pl => 'traditional',
+        meta_merge         => {
+                resources  => {
+                        repository => 'https://github.com/davorg/tie-hash-regex'
+                }
+        },
 );
 
 $build->create_build_script;
