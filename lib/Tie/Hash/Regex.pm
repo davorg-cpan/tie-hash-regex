@@ -56,8 +56,13 @@ using the slightly less readable:
 
 =head2 ATTRIBUTE INTERFACE
 
-From version 0.06, you can use attributes to define your hash as being tied
-to Tie::Hash::Regex. You'll need to install the module Attribute::Handlers.
+From version 0.06, you can use attributes to define your hash as being
+tied to Tie::Hash::Regex. You'll need to install the module
+Attribute::Handlers. Simply declare your hash using the attribute
+syntax: 
+
+    my %hash :Regex;
+
 
 =cut
 
