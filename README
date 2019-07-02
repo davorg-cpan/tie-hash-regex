@@ -33,6 +33,12 @@ HOW DO I INSTALL IT?
   somewhere in your Perl library path (@INC) and copying the Regex.pm file 
   into this directory should also do the trick.
 
+  Since this has been published to CPAN,
+
+      cpanm Tie::Hash::Regex
+
+  will also install it for you along whatever dependency is not yet installed.
+
 WHERE IS THE DOCUMENTATION?
 
   All of the documentation is currently in POD format in the Regex.pm file.
