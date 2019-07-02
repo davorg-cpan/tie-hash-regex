@@ -24,7 +24,7 @@ Tie::Hash::Regex - Match hash keys using Regular Expressions
 
 or (new! improved!)
 
-  my $h : Regex;
+  my %h : Regex;
 
 =head1 DESCRIPTION
 
