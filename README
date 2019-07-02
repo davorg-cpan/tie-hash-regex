@@ -21,9 +21,9 @@ HOW DO I INSTALL IT?
 
        gzip -cd Tie-Hash-Regex-X.XX.tar.gz | tar xvf -
        cd Tie-Hash-Regex-X.XX
-       perl Makefile.PL
-       make
-       make test
+       perl Build.PL
+       Build
+       Build test
        make install
 
 
