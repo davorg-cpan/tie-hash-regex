@@ -15,10 +15,15 @@ my $build = Module::Build->new(
 		'Test::Pod::Coverage' => 0,
 	},
         create_makefile_pl => 'traditional',
-        meta_merge         => {
-                resources  => {
-                        repository => 'https://github.com/davorg/tie-hash-regex'
-                }
+        meta_merge => {
+                'meta-spec' => { version => 2 },
+                resources => {
+                        repository => {
+                               type => 'git',
+                               url  => 'git://github.com/davorg/tie-hash-regex.git',
+                               web  => 'https://github.com/davorg/tie-hash-regex',
+                        },
+                },
         },
 );
 
