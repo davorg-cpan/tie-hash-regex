@@ -15,7 +15,7 @@ $hash{ key11 } = "eleven";
 
 # normal behaviour, without regex
 
-($one, $two) = @hash{ 'key1', 'key2' };
+my ($one, $two) = @hash{ 'key1', 'key2' };
 
 is( $one, $hash{ key1  }, 'Simple key check 1' );
 is( $two, $hash{ key2  }, 'Simple key check 2' );
@@ -27,7 +27,7 @@ is( $two, $hash{ key2  }, 'Simple key check 2' );
 
 undef $one;
 undef $two;
-undef %ones;
+undef my %ones;
 
 # since 5.20 we have slices.... making regex more fun
 
@@ -48,7 +48,7 @@ undef %ones;
 #  is( $#dels, 1, 'Deletion test 1' );
 #}
 
-@oops = delete @hash { 'key3', 'key2' };
+my @oops = delete @hash { 'key3', 'key2' };
 is( $#oops, 1, 'Deletion test 2' );
 
 #TODO: {
