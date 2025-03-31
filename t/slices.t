@@ -27,7 +27,6 @@ is( $two, $hash{ key2  }, 'Simple key check 2' );
 
 undef $one;
 undef $two;
-undef my %ones;
 
 # since 5.20 we have slices.... making regex more fun
 
